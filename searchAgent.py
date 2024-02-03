@@ -1,9 +1,10 @@
-from twoxtwocube import Moves
+from twoxtwocube import Moves, Agent, Problem
+from search import dfs, astar
 import time
 
-class SearchAgent:
+class SearchAgent(Agent):
     def __init__(self, search, problem, heuristic):
-        if search == 'astar': # TODO: fix
+        if search == astar: # TODO: fix
             self.searchFunction = lambda x: search(x, heuristic)
         else:
             self.searchFunction = search
@@ -19,20 +20,12 @@ class SearchAgent:
         print('Path found with total cost of %d in %.1f seconds' % (totalCost, time.time() - startTime))
         print('Search nodes expanded: %d' % problem._expanded)
 
-    
-    def getAction(self, state):
-        if 'actionIndex' not in dir(self):
-            self.actionIndex = 0
-
-        i = self.actionIndex
-        self.actionIndex += 1
-        if i < len(self.actions):
-            return self.actions[i]
-        else:
-            return Moves.STOP
+        
+    def getActions(self):
+        return self.actions
         
 
-class Rubiks2x2SearchProblem:
+class Rubiks2x2SearchProblem(Problem):
     """
     State space is color combinatins on 2x2 rubiks cube
     """
@@ -69,7 +62,12 @@ class Rubiks2x2SearchProblem:
         """
         nextStateNodes = []
         for move in Moves.moves:
-            nextStateNodes.append((move(state), move))
+            cost = 1
+            if move == Moves.tperm:
+                cost = 15
+            elif move == Moves.sune:
+                cost = 8
+            nextStateNodes.append((move(state), move, cost))
         self._expanded += 1
         return nextStateNodes
     

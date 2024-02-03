@@ -111,3 +111,25 @@ class Moves:
 
     TPerm = [R, U, Rprime, Uprime, Rprime, F, R, R, Uprime, Rprime, Uprime, R, U, Rprime, Fprime]
     Sune = [R, U, Rprime, U, R, U, U, Rprime]
+
+
+class Agent:
+    def __init__(self):
+        return
+
+    def getActions(self, state):
+        return
+    
+
+class Problem:
+    def getStartState(self):
+        return
+
+    def isGoalState(self, state):
+        return
+
+    def getSuccessors(self, state):
+        return
+
+    def getCostOfActions(self, actions):
+        return
