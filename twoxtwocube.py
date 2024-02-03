@@ -1,26 +1,4 @@
 class Moves:
-    U = 'u'
-    F = 'f'
-    L = 'l'
-    R = 'r'
-    B = 'b'
-    D = 'd'
-    Uprime = 'up'
-    Fprime = 'fp'
-    Lprime = 'lp'
-    Rprime = 'rp'
-    Bprime = 'bp'
-    Dprime = 'dp'
-    X = 'x'
-    Y = 'y'
-    Z = 'z'
-    Xprime = 'xp'
-    Yprime = 'yp'
-    Zprime = 'zp'
-
-    TPerm = [R, U, Rprime, Uprime, Rprime, F, R, R, Uprime, Rprime, Uprime, R, U, Rprime, Fprime]
-    Sune = [R, U, Rprime, U, R, U, U, Rprime]
-
     def u(self, state):
         ((u1, u2, u3, u4), (f1, f2, f3, f4), (l1, l2, l3, l4), (r1, r2, r3, r4), (b1, b2, b3, b4), (d1, d2, d3, d4)) = state
         return ((u3, u1, u4, u2), (r1, r2, f3, f4), (f1, f2, l3, l4), (b1, b2, r3, r4), (l1, l2, b3, b4), (d1, d2, d3, d4))
@@ -85,4 +63,51 @@ class Moves:
         return Moves.rprime(Moves.u(Moves.u(Moves.r(Moves.u(Moves.rprime(Moves.u(Moves.r(state))))))))
     
 
-    moves = [u, f, l, r, b, d, uprime, fprime, lprime, rprime, bprime, dprime, tperm, sune]
+    def x(state):
+        return Moves.r(Moves.lprime(state))
+    
+
+    def y(state):
+        return Moves.u(Moves.dprime(state))
+    
+
+    def z(state):
+        return Moves.f(Moves.bprime(state))
+    
+
+    def xprime(state):
+        return Moves.x(Moves.x(Moves.x(state)))
+    
+
+    def yprime(state):
+        return Moves.y(Moves.y(Moves.y(state)))
+    
+
+    def zprime(state):
+        return Moves.z(Moves.z(Moves.z(state)))
+    
+
+    moves = [u, f, l, r, b, d, uprime, fprime, lprime, rprime, bprime, dprime, tperm, sune, x, y, z, xprime, yprime, zprime]
+
+    U = u
+    F = f
+    L = l
+    R = r
+    B = b
+    D = d
+    Uprime = uprime
+    Fprime = fprime
+    Lprime = lprime
+    Rprime = rprime
+    Bprime = bprime
+    Dprime = dprime
+    X = x
+    Y = y
+    Z = z
+    Xprime = xprime
+    Yprime = yprime
+    Zprime = zprime
+    STOP = 'stop'
+
+    TPerm = [R, U, Rprime, Uprime, Rprime, F, R, R, Uprime, Rprime, Uprime, R, U, Rprime, Fprime]
+    Sune = [R, U, Rprime, U, R, U, U, Rprime]
