@@ -1,5 +1,5 @@
 from twoxtwocube import Moves, Agent, Problem
-from search import dfs, astar
+from search import astar
 import time
 import sys
 
@@ -64,8 +64,12 @@ class Rubiks2x2SearchProblem(Problem):
             cost = Moves.costs[move]
             nextStateNodes.append((move(state), move, cost))
         self._expanded += 1
+
+        ### Remove this if ever use non a-star
+        #TODO: make a better way to check cube validity
         if (self._expanded > 1000):
             sys.exit("Invalid Cube")
+
         return nextStateNodes
     
 
