@@ -22,7 +22,7 @@ class SearchAgent(Agent):
 
         
     def getActions(self):
-        return self.actions
+        return list((action.__name__ for action in self.actions))
         
 
 class Rubiks2x2SearchProblem(Problem):
@@ -60,12 +60,8 @@ class Rubiks2x2SearchProblem(Problem):
         """
         nextStateNodes = []
         for move in Moves.moves:
-            cost = 1
-            if move == Moves.tperm:
-                cost = 15
-            elif move == Moves.sune:
-                cost = 8
-            nextStateNodes.append((move(state), move.__name__, cost))
+            cost = Moves.costs[move]
+            nextStateNodes.append((move(state), move, cost))
         self._expanded += 1
         return nextStateNodes
     
@@ -76,12 +72,7 @@ class Rubiks2x2SearchProblem(Problem):
         
         totalCost = 0
         for action in actions:
-            if action == Moves.tperm:
-                totalCost += 15
-            elif action == Moves.sune:
-                totalCost += 8
-            else:
-                totalCost += 1
+            totalCost += Moves.costs[action]
         return totalCost
     
 ### TODO: implement

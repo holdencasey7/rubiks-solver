@@ -113,6 +113,7 @@ class Moves:
     
 
     moves = [u, f, l, r, b, d, uprime, fprime, lprime, rprime, bprime, dprime, tperm, sune, sunePrime, x, y, z, xprime, yprime, zprime]
+    costs = {u:1, f:1, l:1, r:1, b:1, d:1, uprime:1, fprime:1, lprime:1, rprime:1, bprime:1, dprime:1, tperm:15, sune:8, sunePrime:8, x:1, y:1, z:1, xprime:1, yprime:1, zprime:1}
 
 
 class Agent:
