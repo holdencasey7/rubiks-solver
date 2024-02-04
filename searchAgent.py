@@ -1,6 +1,7 @@
 from twoxtwocube import Moves, Agent, Problem
 from search import dfs, astar
 import time
+import sys
 
 class SearchAgent(Agent):
     def __init__(self, search, problem, heuristic):
@@ -63,6 +64,8 @@ class Rubiks2x2SearchProblem(Problem):
             cost = Moves.costs[move]
             nextStateNodes.append((move(state), move, cost))
         self._expanded += 1
+        if (self._expanded > 1000):
+            sys.exit("Invalid Cube")
         return nextStateNodes
     
 
