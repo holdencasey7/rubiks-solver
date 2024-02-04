@@ -1,12 +1,9 @@
 from util import PriorityQueue, Stack, Queue
 
 def ucs(problem):
-    #print("***DEBUG***: Starting DFS")
     startState = problem.getStartState()
-    #print("***DEBUG***: DFS Initial State: ", startState)
     if problem.isGoalState(startState):
         return []
-    #print("***DEBUG***: Goal Check Complete")
 
     startNode = (startState, None, 0)
     frontier = PriorityQueue()
@@ -19,7 +16,6 @@ def ucs(problem):
         state = node[0]
 
         if problem.isGoalState(state):
-            #print("***DEBUG***: Goal State Identified", state)
             # Add how we got here
             path.append(node[1])
             # Add how we got to parent nodes
@@ -31,7 +27,6 @@ def ucs(problem):
             return path
 
         for childNode in problem.getSuccessors(state):
-            #print("***DEBUG***: Child Node Found")
             childState = childNode[0]
             newNode = (childNode[0], childNode[1], childNode[2] + node[2])
             if (not (childState in reached)) or newNode[2] < ((reached[childState])[0])[2]:

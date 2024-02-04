@@ -114,29 +114,6 @@ class Moves:
 
     moves = [u, f, l, r, b, d, uprime, fprime, lprime, rprime, bprime, dprime, tperm, sune, sunePrime, x, y, z, xprime, yprime, zprime]
 
-    # U = u
-    # F = f
-    # L = l
-    # R = r
-    # B = b
-    # D = d
-    # Uprime = uprime
-    # Fprime = fprime
-    # Lprime = lprime
-    # Rprime = rprime
-    # Bprime = bprime
-    # Dprime = dprime
-    # X = x
-    # Y = y
-    # Z = z
-    # Xprime = xprime
-    # Yprime = yprime
-    # Zprime = zprime
-    # STOP = 'stop'
-
-    # TPerm = [R, U, Rprime, Uprime, Rprime, F, R, R, Uprime, Rprime, Uprime, R, U, Rprime, Fprime]
-    # Sune = [R, U, Rprime, U, R, U, U, Rprime]
-
 
 class Agent:
     def __init__(self):
