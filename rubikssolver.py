@@ -1,4 +1,4 @@
-from searchAgent import SearchAgent, Rubiks2x2SearchProblem, rubiks2x2heuristic
+from searchAgent import SearchAgent, Rubiks2x2SearchProblem, rubiks2x2FacesHeuristic
 from search import dfs, bfs, astar, ucs
 import sys
 
@@ -18,7 +18,7 @@ if __name__ == '__main__':
     
     print("Using Search:", search)
     scrambledState = (('r', 'w', 'o', 'g'), ('b', 'r', 'g', 'b') ,('w', 'w', 'r', 'y'), ('w', 'o', 'o', 'o'), ('g', 'b', 'g', 'y'), ('r', 'y', 'b', 'y'))
-    searchAgent = SearchAgent(astar, Rubiks2x2SearchProblem, rubiks2x2heuristic)
+    searchAgent = SearchAgent(astar, Rubiks2x2SearchProblem, rubiks2x2FacesHeuristic)
     searchAgent.registerInitialState(scrambledState)
     actions = searchAgent.getActions()
     print(actions)

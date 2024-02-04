@@ -75,8 +75,18 @@ class Rubiks2x2SearchProblem(Problem):
             totalCost += Moves.costs[action]
         return totalCost
     
-### TODO: implement
-def rubiks2x2heuristic(state, problem):
-    return 0
+
+def rubiks2x2FacesHeuristic(state, problem):
+    numCompleteFaces = 0
+    for face in state:
+        if face.count(face[0]) == len(face):
+            numCompleteFaces += 1
+    if numCompleteFaces > 2: 
+        return 0
+    if numCompleteFaces == 2:
+        return 1
+    if numCompleteFaces < 2:
+        return 2
+
 
 
