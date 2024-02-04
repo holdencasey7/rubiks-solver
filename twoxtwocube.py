@@ -68,18 +68,18 @@ class Moves:
     # TPerm = [R, U, Rprime, Uprime, Rprime, F, R, R, Uprime, Rprime, Uprime, R, U, Rprime, Fprime]
     def tperm(state):
         return Moves.fprime(Moves.rprime(Moves.u(Moves.r(Moves.uprime(Moves.rprime(Moves.uprime(Moves.r(Moves.r(Moves.f(Moves.rprime(Moves.uprime(Moves.rprime(Moves.u(Moves.r(state)))))))))))))))
-    tperm.__name__ = "TPerm"
+    tperm.__name__ = "R U Rprime Uprime Rprime F R R Uprime Rprime Uprime R U Rprime Fprime"
 
 
     # Sune = [R, U, Rprime, U, R, U, U, Rprime]
     def sune(state):
         return Moves.rprime(Moves.u(Moves.u(Moves.r(Moves.u(Moves.rprime(Moves.u(Moves.r(state))))))))
-    sune.__name__ = "Sune"
+    sune.__name__ = "R U Rprime U R U U Rprime"
 
     # SunePrime = [R, U, U, Rprime, Uprime, R, Uprime, Rprime]
     def sunePrime(state):
         return Moves.rprime(Moves.uprime(Moves.r(Moves.uprime(Moves.rprime(Moves.u(Moves.u(Moves.r(state))))))))
-    sunePrime.__name__ = "SunePrime"
+    sunePrime.__name__ = "R U U Rprime Uprime R Uprime Rprime"
     
 
     def x(state):

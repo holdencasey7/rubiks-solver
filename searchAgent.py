@@ -75,7 +75,7 @@ class Rubiks2x2SearchProblem(Problem):
             totalCost += Moves.costs[action]
         return totalCost
     
-
+# Not technically correct but works in practicality, better than a true minimum
 def rubiks2x2FacesHeuristic(state, problem):
     numCompleteFaces = 0
     for face in state:
@@ -84,9 +84,11 @@ def rubiks2x2FacesHeuristic(state, problem):
     if numCompleteFaces > 2: 
         return 0
     if numCompleteFaces == 2:
-        return 1
-    if numCompleteFaces < 2:
-        return 2
+        return 100
+    if numCompleteFaces == 1:
+        return 200
+    else:
+        return 300
 
 
 

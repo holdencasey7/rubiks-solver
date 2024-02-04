@@ -17,7 +17,7 @@ if __name__ == '__main__':
         sys.exit()
     
     print("Using Search:", search)
-    scrambledState = (('r', 'w', 'o', 'g'), ('b', 'r', 'g', 'b') ,('w', 'w', 'r', 'y'), ('w', 'o', 'o', 'o'), ('g', 'b', 'g', 'y'), ('r', 'y', 'b', 'y'))
+    scrambledState = (('y', 'b', 'r', 'o'), ('y', 'g', 'w', 'w'), ('b', 'g', 'r', 'g'), ('w', 'r', 'o', 'o'), ('y', 'o', 'g', 'b'), ('r', 'b', 'w', 'y'))
     searchAgent = SearchAgent(searchFunc, Rubiks2x2SearchProblem, rubiks2x2FacesHeuristic)
     searchAgent.registerInitialState(scrambledState)
     actions = searchAgent.getActions()
