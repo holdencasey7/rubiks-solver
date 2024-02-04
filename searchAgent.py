@@ -4,18 +4,22 @@ import time
 
 class SearchAgent(Agent):
     def __init__(self, search, problem, heuristic):
-        if search == astar: # TODO: fix
+        if search == astar:
             self.searchFunction = lambda x: search(x, heuristic)
         else:
             self.searchFunction = search
         
         self.problem = problem
+        #print("***DEBUG***: Initiated Search Agent: ", search, problem, heuristic)
 
 
     def registerInitialState(self, state):
+        #print("***DEBUG***: Beginning with state ", state)
         startTime = time.time()
         problem = self.problem(state)
+        #print("***DEBUG***: Problem: ", problem)
         self.actions = self.searchFunction(problem) # Search function returns a list of actions
+        #print("***DEBUG***: Actions: ", self.actions)
         totalCost = problem.getCostOfActions(self.actions)
         print('Path found with total cost of %d in %.1f seconds' % (totalCost, time.time() - startTime))
         print('Search nodes expanded: %d' % problem._expanded)
@@ -60,14 +64,17 @@ class Rubiks2x2SearchProblem(Problem):
         Returns a list of nodes with the format
         ((next state), move to get there)
         """
+        #print("***DEBUG***: Getting Successors for state: ", state)
         nextStateNodes = []
         for move in Moves.moves:
+            #print("***DEBUG***: Move: ", move)
             cost = 1
             if move == Moves.tperm:
                 cost = 15
             elif move == Moves.sune:
                 cost = 8
-            nextStateNodes.append((move(state), move, cost))
+            #print(move)
+            nextStateNodes.append((move(state), move.__name__, cost))
         self._expanded += 1
         return nextStateNodes
     
