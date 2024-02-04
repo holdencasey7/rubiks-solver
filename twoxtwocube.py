@@ -37,32 +37,32 @@ class Moves:
 
     def uprime(state):
         return Moves.u(Moves.u(Moves.u(state)))
-    uprime.__name__ = "U'"
+    uprime.__name__ = "Uprime"
     
 
     def fprime(state):
         return Moves.f(Moves.f(Moves.f(state)))
-    fprime.__name__ = "F'"
+    fprime.__name__ = "Fprime"
     
 
     def lprime(state):
         return Moves.l(Moves.l(Moves.l(state)))
-    lprime.__name__ = "L'"
+    lprime.__name__ = "Lprime"
     
 
     def rprime(state):
         return Moves.r(Moves.r(Moves.r(state)))
-    rprime.__name__ = "R'"
+    rprime.__name__ = "Rprime"
     
 
     def bprime(state):
         return Moves.b(Moves.b(Moves.b(state)))
-    bprime.__name__ = "B'"
+    bprime.__name__ = "Bprime"
     
 
     def dprime(state):
         return Moves.d(Moves.d(Moves.d(state)))
-    dprime.__name__ = "D'"
+    dprime.__name__ = "Dprime"
     
 
     # TPerm = [R, U, Rprime, Uprime, Rprime, F, R, R, Uprime, Rprime, Uprime, R, U, Rprime, Fprime]
@@ -75,6 +75,11 @@ class Moves:
     def sune(state):
         return Moves.rprime(Moves.u(Moves.u(Moves.r(Moves.u(Moves.rprime(Moves.u(Moves.r(state))))))))
     sune.__name__ = "Sune"
+
+    # SunePrime = [R, U, U, Rprime, Uprime, R, Uprime, Rprime]
+    def sunePrime(state):
+        return Moves.rprime(Moves.uprime(Moves.r(Moves.uprime(Moves.rprime(Moves.u(Moves.u(Moves.r(state))))))))
+    sunePrime.__name__ = "SunePrime"
     
 
     def x(state):
@@ -94,20 +99,20 @@ class Moves:
 
     def xprime(state):
         return Moves.x(Moves.x(Moves.x(state)))
-    xprime.__name__ = "X'"
+    xprime.__name__ = "Xprime"
     
 
     def yprime(state):
         return Moves.y(Moves.y(Moves.y(state)))
-    yprime.__name__ = "Y'"
+    yprime.__name__ = "Yprime"
     
 
     def zprime(state):
         return Moves.z(Moves.z(Moves.z(state)))
-    zprime.__name__ = "Z'"
+    zprime.__name__ = "Zprime"
     
 
-    moves = [u, f, l, r, b, d, uprime, fprime, lprime, rprime, bprime, dprime, tperm, sune, x, y, z, xprime, yprime, zprime]
+    moves = [u, f, l, r, b, d, uprime, fprime, lprime, rprime, bprime, dprime, tperm, sune, sunePrime, x, y, z, xprime, yprime, zprime]
 
     # U = u
     # F = f
