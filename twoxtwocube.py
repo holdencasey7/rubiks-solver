@@ -110,10 +110,57 @@ class Moves:
     def zprime(state):
         return Moves.z(Moves.z(Moves.z(state)))
     zprime.__name__ = "Zprime"
+
+
+    def highlights(state):
+        return Moves.r(Moves.r(Moves.u(Moves.u(Moves.r(Moves.u(Moves.u(Moves.r(Moves.r(state)))))))))
+    highlights.__name__ = "R2 U2 R U2 R2"
+
+
+    def yperm(state):
+        return Moves.fprime(Moves.r(Moves.f(Moves.rprime(Moves.uprime(Moves.rprime(Moves.u(Moves.r(Moves.fprime(Moves.rprime(Moves.u(Moves.r(Moves.uprime(Moves.rprime(Moves.uprime(Moves.r(Moves.f(state)))))))))))))))))
+    yperm.__name__ = "F R Uprime Rprime Uprime R U Rprime Fprime R U Rprime Uprime Rprime F R Fprime"
     
 
-    moves = [u, f, l, r, b, d, uprime, fprime, lprime, rprime, bprime, dprime, tperm, sune, sunePrime, x, y, z, xprime, yprime, zprime]
-    costs = {u:1, f:1, l:1, r:1, b:1, d:1, uprime:1, fprime:1, lprime:1, rprime:1, bprime:1, dprime:1, tperm:15, sune:8, sunePrime:8, x:1, y:1, z:1, xprime:1, yprime:1, zprime:1}
+    def tallcorners(state):
+        return Moves.r(Moves.r(Moves.f(Moves.f(Moves.r(Moves.r(state))))))
+    tallcorners.__name__ = "R2 F2 R2"
+
+
+    def faceswitch(state):
+        return Moves.r(Moves.r(Moves.uprime(Moves.f(Moves.f(Moves.u(Moves.u(Moves.r(Moves.r(Moves.uprime(Moves.r(Moves.r(state))))))))))))
+    faceswitch.__name__ = "R2 Uprime R2 U2 F2 Uprime R2"
+
+
+    def weirdswitch(state):
+        return Moves.rprime(Moves.u(Moves.rprime(Moves.f(Moves.f(Moves.r(Moves.uprime(Moves.r(state))))))))
+    weirdswitch.__name__ = "R Uprime R F2 Rprime U Rprime"
+
+
+    def t2(state):
+        return Moves.fprime(Moves.uprime(Moves.rprime(Moves.u(Moves.r(Moves.f(state))))))
+    t2.__name__ = "F R U Rprime Uprime Fprime"
+
+
+    def t1(state):
+        return Moves.fprime(Moves.r(Moves.f(Moves.rprime(Moves.uprime(Moves.rprime(Moves.u(Moves.r(state))))))))
+    t1.__name__ = "R U Rprime Uprime Rprime F R Fprime"
+
+
+    def checker(state):
+        return Moves.r(Moves.f(Moves.rprime(Moves.uprime(Moves.rprime(Moves.u(Moves.r(Moves.fprime(state))))))))
+    checker.__name__ = "Fprime R U Rprime Uprime Rprime F R"
+
+
+    def arms(state):
+        return Moves.fprime(Moves.uprime(Moves.rprime(Moves.u(Moves.r(Moves.uprime(Moves.rprime(Moves.u(Moves.r(Moves.f(state))))))))))
+    arms.__name__ = "F R U Rprime Uprime R U Rprime Uprime Fprime"
+
+
+    moves = [u, f, l, r, b, d, uprime, fprime, lprime, rprime, bprime, dprime, tperm, sune, sunePrime, x, y, z, xprime, yprime, zprime,
+             highlights, yperm, tallcorners, faceswitch, weirdswitch, t2, t1, checker, arms]
+    costs = {u:1, f:1, l:1, r:1, b:1, d:1, uprime:1, fprime:1, lprime:1, rprime:1, bprime:1, dprime:1, tperm:15, sune:8, sunePrime:8, x:1, y:1, z:1,
+             xprime:1, yprime:1, zprime:1, highlights:9, yperm:17, tallcorners:6, faceswitch:12, weirdswitch: 8, t2:6, t1:8, checker:8, arms:10}
 
 
 class Agent:
